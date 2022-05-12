@@ -1,0 +1,12 @@
+.question{
+    font-size: 32px;
+   
+
+
+}
+.middlePortion{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    margin-top: 50px;
+}

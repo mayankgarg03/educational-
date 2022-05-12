@@ -1,0 +1,28 @@
+.mainContent-nav{
+    width:100%;
+    display:flex;
+}
+
+.navbar-title{
+    font-size: 50px;
+}
+
+.nav-middle{
+   
+    width:32%;
+    margin-left: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+.navbar-leftcontent{
+   
+    width:20%;
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   position: relative;
+}
