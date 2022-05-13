@@ -26,14 +26,12 @@ export function NavBar(props) {
 
         <div class="navbar-leftcontent">
           <button onClick={(e) => handleHelp()} style={{ marginRight: "50px" }}>
-            {" "}
             <HelpOutlineSharpIcon
               className={classes.helpIcon}
               fontSize="large"
             />{" "}
           </button>
           <button onClick={(e) => handleClose()}>
-            {" "}
             <CancelOutlinedIcon fontSize="large" />{" "}
           </button>
         </div>
