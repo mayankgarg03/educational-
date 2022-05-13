@@ -18,7 +18,6 @@ import ServerModal from "../Components/Modal/ServerModal";
 import sound_1 from "../Sound/wrong.mp3";
 import { Howl, Howler } from "howler";
 
-
 const useStyles = makeStyles((theme) => ({
   formControl: {
     width: "20vw",
@@ -68,8 +67,8 @@ function Spelling(props) {
   //   });
   //   sound.play();
   // }
-  const WrongSound= new Audio(sound_1);
- // const SoundWrong= new Audio("wrong.mp3");
+  const WrongSound = new Audio(sound_1);
+  // const SoundWrong= new Audio("wrong.mp3");
   const title = "Sentence-Fill-In";
   //const isPaused=true;
   const classes = useStyles();
@@ -93,7 +92,7 @@ function Spelling(props) {
       loadActivity();
     }
   }, [mockData]);
-  console.log("0000010000 sen enmce",sentences)
+  console.log("0000010000 sen enmce", sentences);
 
   // putting value in dropbox form menu list
   const handleChange = (event, id) => {
@@ -193,138 +192,144 @@ function Spelling(props) {
 
   return (
     <div class="wrapp">
-      <NavBar title={title} handleHelp={handleHelp} />
-      <div>
-        <Activityframe>
-          <>
-            {modal === false && <InstructionButton />}
-            {modal && <ServerModal />}
-            {isPaused && modal === false ? (
-              <span class="pausedClass"> Paused </span>
-            ) : (
-              modal === false && (
-                <div class="mainWrapper">
-                  {sentences.length !== 0
-                    ? sentences.map((item, index, arr) => {
-                        return (
-                          <div class="mapDiv">
-                            <div style={{ fontWeight: "600" }}>
-                              {index + 1}
-                              {"."}
-                            </div>
-                            <span
-                              style={{
-                                display: "flex",
-                                marginLeft: "20px",
-                              }}
-                            >
-                              <span>
-                                <h5> {item.leftText ? item.leftText : ""}</h5>
+      <div className="wrapperFrame">
+        <NavBar title={title} handleHelp={handleHelp} />
+        <div>
+          <Activityframe>
+            <>
+              {modal === false && <InstructionButton />}
+              {modal && <ServerModal />}
+              {isPaused && modal === false ? (
+                <span class="pausedClass"> Paused </span>
+              ) : (
+                modal === false && (
+                  <div class="mainWrapper">
+                    {sentences.length !== 0
+                      ? sentences.map((item, index, arr) => {
+                          return (
+                            <div class="mapDiv">
+                              <div style={{ fontWeight: "600" }}>
+                                {index + 1}
+                                {"."}
+                              </div>
+                              <span
+                                style={{
+                                  display: "flex",
+                                  marginLeft: "20px",
+                                }}
+                              >
+                                <span>
+                                  <h5> {item.leftText ? item.leftText : ""}</h5>
+                                </span>
+                                <div
+                                  style={{
+                                    marginLeft: "15px",
+                                    marginRight: "15px",
+                                    display: "flex",
+                                  }}
+                                >
+                                  <FormControl className={classes.formControl}>
+                                    <Select
+                                      className={classes.select}
+                                      labelId="demo-simple-select-label"
+                                      id={item.id}
+                                      value={item.selectedWord}
+                                      onChange={(e) => handleChange(e, item.id)}
+                                    >
+                                      {dummy &&
+                                        item.distractor.map((currentValue) => {
+                                          return (
+                                            <MenuItem
+                                              key={currentValue}
+                                              value={currentValue}
+                                            >
+                                              {" "}
+                                              {currentValue}
+                                            </MenuItem>
+                                          );
+                                        })}
+                                    </Select>
+                                  </FormControl>
+                                  {item.iconShow && item.shows ? (
+                                    <span
+                                      style={{
+                                        marginLeft: "3px",
+                                        marginTop: "5px",
+                                      }}
+                                    >
+                                      <Correctincorrect
+                                        correct={item.isCorrect}
+                                        shows={item.iconShow}
+                                      />{" "}
+                                    </span>
+                                  ) : (
+                                    " "
+                                  )}
+                                </div>
+                                <span>
+                                  <h5>
+                                    {item.rightText ? item.rightText : ""}
+                                  </h5>
+                                </span>
                               </span>
                               <div
                                 style={{
-                                  marginLeft: "15px",
-                                  marginRight: "15px",
-                                  display: "flex",
+                                  marginLeft: "20px",
+                                  marginLeft: "80px",
                                 }}
                               >
-                                <FormControl className={classes.formControl}>
-                                  <Select
-                                    className={classes.select}
-                                    labelId="demo-simple-select-label"
-                                    id={item.id}
-                                    value={item.selectedWord}
-                                    onChange={(e) => handleChange(e, item.id)}
+                                {console.log("00000000", item.id, index)}
+                                {item.shows &&
+                                item.trailCount < 2 &&
+                                item.isCorrect === false ? (
+                                  <button
+                                    type="button"
+                                    disabled={item.isDisable}
+                                    class={item.isDisable === false ? "c1" : ""}
+                                    onClick={() => handleSubmitClick(item.id)}
                                   >
-                                    {dummy &&
-                                      item.distractor.map((currentValue) => {
-                                        return (
-                                          <MenuItem
-                                            key={currentValue}
-                                            value={currentValue}
-                                          >
-                                            {" "}
-                                            {currentValue}
-                                          </MenuItem>
-                                        );
-                                      })}
-                                  </Select>
-                                </FormControl>
-                                {item.iconShow && item.shows ? (
-                                  <span
-                                    style={{
-                                      marginLeft: "3px",
-                                      marginTop: "5px",
-                                    }}
-                                  >
-                                    <Correctincorrect
-                                      correct={item.isCorrect}
-                                      shows={item.iconShow}
-                                    />{" "}
-                                  </span>
-                                ) : (
-                                  " "
-                                )}
-                              </div>
-                              <span>
-                                <h5>{item.rightText ? item.rightText : ""}</h5>
-                              </span>
-                            </span>
-                            <div
-                              style={{
-                                marginLeft: "20px",
-                                marginLeft: "80px",
-                              }}
-                            >
-                              {console.log("00000000", item.id, index)}
-                              {item.shows &&
-                              item.trailCount < 2 &&
-                              item.isCorrect === false ? (
-                                <button
-                                  type="button"
-                                  disabled={item.isDisable}
-                                  class={item.isDisable === false ? "c1" : ""}
-                                  onClick={() => handleSubmitClick(item.id)}
-                                >
-                                  {" "}
-                                  Submit
-                                </button>
-                              ) : (
-                                ""
-                              )}
-                              <div id="replicate">
-                                {" "}
-                                {item.replicate && (
-                                  <h5>
                                     {" "}
-                                    {item.leftText +
-                                      " " +
-                                      item.correctedWord +
-                                      " " +
-                                      item.rightText}{" "}
-                                  </h5>
-                                )}{" "}
+                                    Submit
+                                  </button>
+                                ) : (
+                                  ""
+                                )}
+                                <div id="replicate">
+                                  {" "}
+                                  {item.replicate && (
+                                    <h5>
+                                      {" "}
+                                      {item.leftText +
+                                        " " +
+                                        item.correctedWord +
+                                        " " +
+                                        item.rightText}{" "}
+                                    </h5>
+                                  )}{" "}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        );
-                      })
-                    : " "}
-                </div>
-              )
+                          );
+                        })
+                      : " "}
+                  </div>
+                )
+              )}
+            </>
+          </Activityframe>
+        </div>
+
+        <div className="activityFooter">
+          <div className="activityFooterFrame">
+            {isPaused ? (
+              <PlayButton handlePause={handlePause} />
+            ) : (
+              <PauseButton handlePause={handlePause} />
             )}
-          </>
-        </Activityframe>
+            <Footer />
+          </div>
+        </div>
       </div>
-
-      {isPaused ? (
-        <PlayButton handlePause={handlePause} />
-      ) : (
-        <PauseButton handlePause={handlePause} />
-      )}
-
-        <Footer />
-     
     </div>
   );
 }

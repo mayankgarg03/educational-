@@ -5,13 +5,8 @@ import "./Footer.css";
 function Footer() {
   return (
     <>
-      <div class="Foot">
-        <button
-          class="b1"
-          style={{ float: "right", marginRight: "45px", padding:"8px" }}
-        >
-          Submit
-        </button>
+      <div>
+        <button class="b1">Submit</button>
       </div>
     </>
   );

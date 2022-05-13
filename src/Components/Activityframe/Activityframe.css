@@ -1,28 +1,27 @@
-
-.main{
-    width:100%;
-   display:flex;
-   justify-content: center;
-   position: relative;
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 
-.mainwrapper{
-   margin:3rem 4rem 0rem 4rem;
-    height: 500px;
-    width:75%;
-    background-color: aliceblue;
-    border-radius: 10px;
-    
+.mainwrapper {
+  margin: 3rem 4rem 0rem 4rem;
+  height: 500px;
+  width: 75%;
+  background-color: aliceblue;
+  border-radius: 10px;
 }
 
-.progressBar{
-    top:5px;
-    width:100%;
-    height:15px;
-    border-radius: 30px;
-    background-color: rgb(146, 68, 235);
+.progressBar {
+  top: 5px;
+  width: 100%;
+  height: 15px;
+  border-radius: 30px;
+  background-color: rgb(146, 68, 235);
 }
 
-.mainframe{
-    margin-top: 5px;
-    }
+.mainframe {
+  margin-top: 10px;
+  margin-left: 10px;
+}
